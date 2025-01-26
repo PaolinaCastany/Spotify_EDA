@@ -120,7 +120,6 @@ Key analyses included:
 - Daily Patterns: Explored how my listening habits varied day-to-day.
 - Love-Hate Songs: Highlighted tracks with high play counts but frequent skips.
 - Artist Diversity: Analyzed how my music taste evolved over time in terms of variety.
-- The results were exported as CSV files for visualization.
 
 ```SQL
 -- Love-Hate Relationship Songs 2024
