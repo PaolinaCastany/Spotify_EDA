@@ -114,8 +114,6 @@ Next, I used SQL in DataCamp’s DataLab to perform the core analysis. I created
 - Tracks: Aggregated total playtime and play counts for each track.
 - Artists: Captured artist-level metrics, including total listening time and genre diversity.
 
-ADD PIC
-
 Key analyses included:
 - Overall Statistics: Calculated total listening time and the number of unique tracks, artists, and albums in my data.
 - Top Tracks: Identified the most listened-to songs based on total minutes played.
@@ -123,6 +121,38 @@ Key analyses included:
 - Love-Hate Songs: Highlighted tracks with high play counts but frequent skips.
 - Artist Diversity: Analyzed how my music taste evolved over time in terms of variety.
 - The results were exported as CSV files for visualization.
+
+```SQL
+-- Love-Hate Relationship Songs 2024
+
+-- Temporary table to store additional details
+CREATE TEMPORARY TABLE top_tracks_details AS
+SELECT 
+    track_name,
+    artist_name,
+    album_name,
+    COUNT(*) as total_plays,
+    SUM(CASE WHEN skipped THEN 1 ELSE 0 END) as skip_count,
+    SUM(minutes_played) as total_minutes
+FROM '2023_2024.csv'
+WHERE 
+    year = 2024 
+    AND artist_name NOT LIKE '%ASMR%'
+GROUP BY track_name, artist_name, album_name;
+
+-- Select the top 100 tracks based on play count and join with the temporary table to get the final result
+SELECT 
+    d.track_name,
+    d.artist_name,
+    d.album_name,
+    d.total_plays,
+    d.skip_count,
+    d.total_minutes
+FROM top_tracks_details d
+ORDER BY d.total_plays DESC, d.skip_count DESC
+LIMIT 101;
+```
+![SQL 1](https://github.com/user-attachments/assets/a9f31980-267e-481a-ad60-6bf6e9e8ad4a)
 
 ## Visualization with Tableau
 To present the results, I created a dashboard in Tableau that showcases my listening patterns. After importing the SQL query results into Tableau, I built the following visualizations:
