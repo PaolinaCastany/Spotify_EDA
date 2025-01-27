@@ -121,6 +121,8 @@ Key analyses included:
 - Love-Hate Songs: Highlighted tracks with high play counts but frequent skips.
 - Artist Diversity: Analyzed how my music taste evolved over time in terms of variety.
 
+Here is a code example of Songs I have a love-hate relationship with: Songs that appear in my top 100 tracks (2024) but that I frequently skipped
+
 ```SQL
 -- Love-Hate Relationship Songs 2024
 
@@ -154,10 +156,7 @@ LIMIT 101;
 ![SQL 1](https://github.com/user-attachments/assets/a9f31980-267e-481a-ad60-6bf6e9e8ad4a)
 
 ## Visualization with Tableau
-To present the results, I created a dashboard in Tableau that showcases my listening patterns. After importing the SQL query results into Tableau, I built the following visualizations:
-
-
-ADD SCREENSHOT
+To present the results, I created a dashboard in Tableau that showcases my listening patterns of last year (2024) and adding a few overall statistics about my listening patterns since 2013. After importing the SQL query results into Tableau, I imported the Tableau file into Figma to build the following visualizations:
 
 
 Top Tracks: A bar chart displaying my most played songs by total listening time.
