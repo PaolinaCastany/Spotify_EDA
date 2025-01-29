@@ -7,17 +7,18 @@ A data-driven way to explore my music journey
 
 This project explores my personal Spotify listening data to uncover patterns and insights about my music preferences and habits. Using Python, SQL, and Tableau, I processed raw data, performed analysis, and created visualizations to summarize my listening behavior. Below, I outline the steps taken in the project.
 
-### Data Processing with Python
+#### A. Data cleaning and integration (Spotify_data_cleaning_integration.ipynb notebook)
 To begin, I used Python in Google Colab to process the raw data files provided by Spotify. The data was in JSON format, which I loaded into a Pandas DataFrame for cleaning and transformation. Key steps included:
 - Cleaning and Enrichment: Converted timestamps into human-readable dates and extracted useful features like listening time (in minutes), date, hour, and month.
 - Spotify API Integration: To enhance the analysis, I used Spotify’s API to match track URIs in my data with additional metadata, such as artist genres. This allowed for deeper exploration of my genre preferences.
 
-### Genre Analysis and Clustering
+#### B. Genre Clustering (Spotify_genres.ipynb)
 
-After enriching the data with genre information from Spotify's API, I performed an in-depth analysis of musical genres in my listening history. The analysis involved several sophisticated techniques:
+Once I enriched the data with genre information from Spotify's API, I discovered there were over 900 unique genres. To make sense of this diversity, I applied a K-means clustering algorithm to group them.
 
-#### Genre Clustering
-To better understand patterns in my music taste, I implemented a weighted K-means clustering algorithm that groups similar genres together. The process included:
+Initially, the clustering results were inconclusive. To improve accuracy, I iteratively refined the process by introducing weighted clustering and implementing custom rules.
+
+Here is an overview of these steps:
 
 - **Genre Preprocessing**: Standardized genre names and created a hierarchical mapping of related genres. Here's an example of how genres are preprocessed:
 
@@ -52,7 +53,7 @@ def apply_genre_weights(genres):
     return [weights.get(genre, 1.0) for genre in genres]
 ```
 
-- **Custom Rules**: Implemented specific rules to ensure logical grouping of genres. Here's a snippet showing how custom rules are applied:
+- **Custom Rules**: Implemented specific rules to ensure logical grouping of genres. Here's a fragment showing how custom rules are applied:
 
 ```python
 genre_rules = {
@@ -68,46 +69,26 @@ def create_custom_clusters(df, genre_rules):
         df.loc[mask, 'cluster'] = cluster_name
     return df
 ```
+#### C. Genre Classification (Spotify_genres.ipynb)
 
-#### Visualization Techniques
-To visualize the clustering results, I created two key visualizations:
+I ultimately shifted my approach to classification for more accurate genre identification. The classification model was built using genre mappings and utilized features extracted from the cleaned dataset.
 
-1. **Cluster Size Distribution**: Shows how tracks are distributed across different clusters, helping identify dominant genre groups in my listening history.
+Here are the key components:
 
-```python
-def plot_cluster_sizes(df):
-    plt.figure(figsize=(12, 6))
-    cluster_sizes = df['cluster'].value_counts()
-    sns.barplot(x=cluster_sizes.index, y=cluster_sizes.values)
-    plt.title('Distribution of Tracks Across Clusters')
-    plt.xlabel('Cluster')
-    plt.ylabel('Number of Tracks')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    plt.savefig('cluster_sizes.png')
-```
+1. **Genre Hierarchy**: A dictionary that defines primary genre categories along with their associated sub-genres and priorities. This structure allows for organized classification based on genre similarities.
 
-![cluster_sizes (1)](https://github.com/user-attachments/assets/b48b69be-50d1-4668-803f-bd024f7e671c)
+2. **Cleaning Function** (clean_genres_improved):
+- Input: A DataFrame containing a column of genres.
+- Process:
+    - Cleans and standardizes genre entries.
+    - Determines the primary genre for each entry using the defined hierarchy.
+    - Applies additional rules to refine classification, such as recognizing specific keywords (e.g., 'children', 'comedy').
+- Output: A DataFrame with an added column for improved genre classifications.
 
-
-2. **Genre Distribution**: Provides an overview of the overall distribution of genres in the dataset, revealing my most frequent musical preferences.
-
-```python
-def plot_genre_distribution(df):
-    plt.figure(figsize=(12, 6))
-    all_genres = [g for genres in df['cleaned_genres'] for g in genres]
-    genre_counts = pd.Series(all_genres).value_counts().head(20)
-    sns.barplot(x=genre_counts.values, y=genre_counts.index)
-    plt.title('Top 20 Genres in Dataset')
-    plt.xlabel('Number of Tracks')
-    plt.tight_layout()
-    plt.savefig('genre_distribution.png')
-```
-![genre_distribution (1)](https://github.com/user-attachments/assets/8c7d21d9-6806-4b09-afaf-92961c68365a)
-
-
-These visualizations helped identify clear patterns in my listening habits and revealed interesting connections between different musical styles in my library.
-
+3. **Cluster Analysis Function** (analyze_clusters):
+- Input: The cleaned DataFrame.
+- Process: Analyzes the distribution of genres within each cluster, identifying the top genres and counting the total number of tracks per cluster.
+- Output: A summary of genre distribution for each cluster.
 
 Exporting for SQL Analysis: After cleaning and enriching the dataset, I exported the data into CSV files, structured for SQL analysis.
 
