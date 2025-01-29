@@ -111,7 +111,7 @@ These visualizations helped identify clear patterns in my listening habits and r
 
 Exporting for SQL Analysis: After cleaning and enriching the dataset, I exported the data into CSV files, structured for SQL analysis.
 
-### EDA Part 2 - SQL Analysis
+## EDA Part 2 - SQL Analysis
 Next, I used SQL in DataCamp’s DataLab to perform the core analysis. I created three tables:
 - Streams: Contained detailed listening session data (e.g., track name, artist, time played).
 - Tracks: Aggregated total playtime and play counts for each track.
@@ -158,7 +158,7 @@ LIMIT 101;
 ```
 ![SQL 1](https://github.com/user-attachments/assets/a9f31980-267e-481a-ad60-6bf6e9e8ad4a)
 
-## Visualization with Tableau
+##Part 3: Visualization with Tableau
 To present the results, I created a dashboard in Tableau that showcases my listening patterns of last year (2024) and adding a few overall statistics about my listening patterns since 2013. After importing the SQL query results into Tableau, I made a template for my dashboard in Figma, uploading it it to Tableau and building the following visualizations:
 
 ![Spotify Dashboard](https://github.com/user-attachments/assets/fe8d26a6-edbb-4271-a2e8-0908eb7c72a8)
