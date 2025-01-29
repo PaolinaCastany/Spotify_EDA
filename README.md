@@ -1,5 +1,7 @@
 # Spotify Data Analysis Project 
 
+![Spotify Dashboard](https://github.com/user-attachments/assets/ae802f86-45fc-4298-a165-85f6681067ff)
+
 ## Exploratory Data Analysis (EDA) - Part 1: Python
 
 This project explores my personal Spotify listening data to uncover patterns and insights about my music preferences and habits. Using Python, SQL, and Tableau, I processed raw data, performed analysis, and created visualizations to summarize my listening behavior. Below, I outline the steps taken in the project.
@@ -156,8 +158,9 @@ LIMIT 101;
 ![SQL 1](https://github.com/user-attachments/assets/a9f31980-267e-481a-ad60-6bf6e9e8ad4a)
 
 ## Visualization with Tableau
-To present the results, I created a dashboard in Tableau that showcases my listening patterns of last year (2024) and adding a few overall statistics about my listening patterns since 2013. After importing the SQL query results into Tableau, I imported the Tableau file into Figma to build the following visualizations:
+To present the results, I created a dashboard in Tableau that showcases my listening patterns of last year (2024) and adding a few overall statistics about my listening patterns since 2013. After importing the SQL query results into Tableau, I made a template for my dashboard in Figma, uploading it it to Tableau and building the following visualizations:
 
+![Spotify Dashboard](https://github.com/user-attachments/assets/fe8d26a6-edbb-4271-a2e8-0908eb7c72a8)
 
 Top Tracks: A bar chart displaying my most played songs by total listening time.
 Daily Trends: A line chart showing changes in listening behavior over time.
