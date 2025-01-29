@@ -158,7 +158,7 @@ LIMIT 101;
 ```
 ![SQL 1](https://github.com/user-attachments/assets/a9f31980-267e-481a-ad60-6bf6e9e8ad4a)
 
-##Part 3: Visualization with Tableau
+## Part 3: Visualization with Tableau
 To present the results, I created a dashboard in Tableau that showcases my listening patterns of last year (2024) and adding a few overall statistics about my listening patterns since 2013. After importing the SQL query results into Tableau, I made a template for my dashboard in Figma, uploading it it to Tableau and building the following visualizations:
 
 ![Spotify Dashboard](https://github.com/user-attachments/assets/fe8d26a6-edbb-4271-a2e8-0908eb7c72a8)
