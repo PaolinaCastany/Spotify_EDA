@@ -1,4 +1,5 @@
 # Spotify Data Analysis Project 
+A data-driven way to explore my music journey
 
 ![Spotify Dashboard](https://github.com/user-attachments/assets/ae802f86-45fc-4298-a165-85f6681067ff)
 
@@ -162,7 +163,14 @@ To present the results, I created a dashboard in Tableau that showcases my liste
 
 ![Spotify Dashboard](https://github.com/user-attachments/assets/fe8d26a6-edbb-4271-a2e8-0908eb7c72a8)
 
-Top Tracks: A bar chart displaying my most played songs by total listening time.
-Daily Trends: A line chart showing changes in listening behavior over time.
-Love-Hate Relationship Songs: A dual-axis chart comparing the number of plays and skips for specific tracks.
-Artist Diversity: A line chart illustrating the number of unique artists I listened to monthly.
+This visualization presents my 2024 Spotify Wrapped data, showcasing listening habits, favorite artists, genres, and patterns over the year. 
+
+Highlights include:
+- Total Listening: 4,529 unique tracks, 1,947 artists, and 30,114 minutes on Spotify (I also added an average time I spent playing guitar)
+- Top Artists: Hozier tops my list with 469.5 minutes played, followed by Fleetwood Mac, Natalia Lafourcade, and ABBA.
+- Favorite Genres: Pop, rock, folk, and dance dominate my listening habits, visualized as a genre bubble chart.
+- Listening Trends:
+    - Most-played track each month includes hits like "Indigo Night" (January) and "Higher Ground" (November).
+    - Songs I frequently skip despite being in my top 100, like "3 Nights" and "Back to Black."
+    - Declining favorites, such as "Tamacun" and "Wasting My Young Years."
+- Daily & Quarterly Breakdown: Peaks in December with 536.6 minutes in a single day and a steady increase in listening from Q1 to Q4.
